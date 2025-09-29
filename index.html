@@ -4,32 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mahmoud Keweisy's Digital CV - English Teacher and Computer Science Student">
+  <meta property="og:title" content="Mahmoud Keweisy - Digital CV">
+  <meta property="og:description" content="Explore the professional journey of Mahmoud Keweisy, an English educator and Computer Science student based in Warsaw.">
+  <meta property="og:image" content="https://your-hosted-image.com/profile.jpg">
+  <meta property="og:url" content="https://your-hosted-cv-url.com">
   <title>Mahmoud Keweisy - Digital CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #1a1a1a;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
       color: #e0e0e0;
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      color: #1a1a1a;
     }
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      position: relative;
+    }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #d4af37;
+      color: #1a1a1a;
+      padding: 8px;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      top: 0;
     }
     header {
       text-align: center;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #d4af37; /* Gold accent inspired by Luxverra */
+      padding-bottom: 40px;
+      border-bottom: 2px solid #d4af37;
+      background: url('https://via.placeholder.com/1000x200?text=Header+Background') center/cover;
+      position: relative;
     }
     h1 {
-      margin-bottom: 5px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
       color: #d4af37;
-      font-weight: 700;
+      font-size: 2.5em;
+    }
+    body.light-mode h1, body.light-mode h2 {
+      color: #1a1a1a;
     }
     a {
       color: #1e90ff;
@@ -38,12 +67,12 @@
     }
     a:hover {
       color: #40c4ff;
-      text-decoration: underline;
     }
     h2 {
-      margin-top: 40px;
+      font-family: 'Playfair Display', serif;
+      margin-top: 50px;
       border-bottom: 1px solid #d4af37;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
       color: #d4af37;
       font-weight: 400;
     }
@@ -53,70 +82,177 @@
     .subsection {
       margin-top: 20px;
     }
-    .skills-grid {
+    .skills-grid, .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
+      gap: 15px;
     }
-    .skills-grid li {
+    .skills-grid li, .portfolio-grid li {
       background: #2a2a2a;
-      padding: 8px 12px;
-      border-radius: 5px;
+      padding: 10px;
+      border-radius: 8px;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    body.light-mode .skills-grid li, body.light-mode .portfolio-grid li {
+      background: #e0e0e0;
+    }
+    .skills-grid li:hover, .portfolio-grid li:hover {
+      transform: scale(1.05);
+    }
+    .progress-bar {
+      background: #3a3a3a;
+      border-radius: 5px;
+      height: 10px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    body.light-mode .progress-bar {
+      background: #ccc;
+    }
+    .progress-bar div {
+      background: #d4af37;
+      height: 100%;
+      transition: width 1s ease-in-out;
     }
     .contact-info i {
-      margin-right: 8px;
+      margin-right: 10px;
       color: #d4af37;
     }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .back-to-top {
+    .back-to-top, .theme-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #d4af37;
       color: #1a1a1a;
-      padding: 10px 15px;
+      padding: 12px;
       border-radius: 50%;
-      display: none;
       cursor: pointer;
       font-size: 1.2em;
+      z-index: 100;
+    }
+    .theme-toggle {
+      right: 70px;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1a1a1a;
+      padding: 10px 0;
+      z-index: 50;
+    }
+    body.light-mode nav {
+      background: #f5f5f5;
+    }
+    nav a {
+      margin: 0 15px;
+      font-size: 0.9em;
+    }
+    .portfolio-card {
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      color: #e0e0e0;
+    }
+    body.light-mode .modal-content {
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+    .download-btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #1a1a1a;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+    }
+    .download-btn:hover {
+      transform: scale(1.05);
     }
     footer {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 50px;
       padding-top: 20px;
       border-top: 1px solid #d4af37;
       font-size: 0.9em;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      animation: wave 5s infinite;
+    }
+    @keyframes wave {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     @media (max-width: 600px) {
       .container {
-        padding: 20px 10px;
+        padding: 30px 15px;
       }
       h1 {
-        font-size: 1.8em;
+        font-size: 2em;
       }
       img {
         width: 100px;
         height: 100px;
       }
-      .skills-grid {
+      .skills-grid, .portfolio-grid {
         grid-template-columns: 1fr;
+      }
+      nav a {
+        margin: 0 5px;
+        font-size: 0.8em;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <a href="#main-content" class="skip-link">Skip to Content</a>
+  <nav>
+    <div class="container">
+      <a href="#professional-summary" onclick="smoothScroll(event, 'professional-summary')">Summary</a>
+      <a href="#education" onclick="smoothScroll(event, 'education')">Education</a>
+      <a href="#experience" onclick="smoothScroll(event, 'experience')">Experience</a>
+      <a href="#portfolio" onclick="smoothScroll(event, 'portfolio')">Portfolio</a>
+      <a href="#skills" onclick="smoothScroll(event, 'skills')">Skills</a>
+      <a href="#certifications" onclick="smoothScroll(event, 'certifications')">Certifications</a>
+    </div>
+  </nav>
+  <div class="container" id="main-content">
     <header class="fade-in">
-      <img src="profile.jpg" alt="Mahmoud Keweisy's Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
+      <img src="https://via.placeholder.com/120" alt="Mahmoud Keweisy's Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
       <h1>Mahmoud Keweisy</h1>
       <p class="contact-info">
         <i class="fas fa-map-marker-alt"></i> Warsaw, Poland • 
@@ -126,12 +262,12 @@
       </p>
     </header>
 
-    <section class="fade-in">
+    <section class="fade-in" id="professional-summary">
       <h2>Professional Summary</h2>
-      <p>Versatile English language educator with experience teaching diverse age groups, from preschool to adults, across various settings. Currently pursuing a B.Sc. in Computer Science, with expertise in multidisciplinary projects and digital tools. Certified in TESOL-TEFL and team management, I excel in designing engaging learning experiences and driving tech innovation. Adept at fostering cross-cultural understanding and delivering impactful results. <strong>Available to discuss opportunities to bring my skills to your team.</strong></p>
+      <p>Versatile English language educator with experience teaching diverse age groups, from preschool to adults, across various settings. Currently pursuing a B.Sc. in Computer Science, with expertise in multidisciplinary projects and digital tools. Certified in TESOL-TEFL and team management, I excel in designing engaging learning experiences and driving tech innovation. <strong>Let’s connect to explore how I can contribute to your team’s success.</strong></p>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in" id="education">
       <h2>Education</h2>
       <ul>
         <li><strong>Bachelor of Science in Computer Science</strong> – Akademia Ekonomiczno-Humanistyczna w Warszawie – 2021–Present, Warsaw<br>
@@ -141,72 +277,72 @@
       </ul>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in" id="experience">
       <h2>Experience</h2>
       <article class="subsection">
         <strong>Mini Misie Preschool – Warsaw</strong><br>
         <em>English Teacher, Feb 2024 – Present</em>
         <ul>
           <li>Deliver engaging English lessons for preschoolers using storytelling, music, and sensory play.</li>
-          <li>Launched “English Corners,” increasing parent engagement by 20% through interactive programs.</li>
-          <li>Develop personalized language plans, adapting to diverse learning styles and tracking progress.</li>
-          <li>Organize cultural events and English showcases, boosting children’s confidence and public speaking.</li>
-          <li>Collaborate with staff to enhance curriculum and integrate English across subjects.</li>
-          <li>Use tools like LiveKid and Canva to enrich classroom experiences and family communication.</li>
+          <li>Launched “English Corners,” increasing parent engagement by 20%.</li>
+          <li>Develop personalized language plans, adapting to diverse learning styles.</li>
+          <li>Organize cultural events, boosting children’s confidence and public speaking.</li>
+          <li>Use tools like LiveKid and Canva to enhance classroom experiences.</li>
         </ul>
       </article>
-
       <article class="subsection">
         <strong>Web Tatweer – Warsaw</strong><br>
         <em>Poland Branch Manager, Jan 2024 – Present</em>
         <ul>
-          <li>Lead operations and growth for Poland branch, bridging regional and global tech expertise.</li>
-          <li>Delivered a €50,000 web project for a European client, achieving 95% client satisfaction.</li>
-          <li>Manage tech projects, ensuring efficiency, innovation, and tailored client solutions.</li>
-          <li>Support startups and enterprises in scalable digital transformation across Europe.</li>
-          <li>Coordinate international teams to deliver projects on time and within budget.</li>
+          <li>Lead Poland branch operations, driving regional tech growth.</li>
+          <li>Delivered a €50,000 web project, achieving 95% client satisfaction.</li>
+          <li>Manage tech projects, ensuring efficiency and innovation.</li>
+          <li>Support startups and enterprises in digital transformation.</li>
         </ul>
       </article>
-
       <article class="subsection">
         <strong>Brighton Academy – Warsaw</strong><br>
         <em>English Teacher, 2023</em>
         <ul>
-          <li>Designed interactive English lessons for primary students, focusing on grammar and comprehension.</li>
-          <li>Assessed student progress via quizzes and presentations, providing tailored feedback.</li>
-          <li>Led extracurricular activities, integrating English into broader educational themes.</li>
+          <li>Designed interactive English lessons for primary students.</li>
+          <li>Assessed progress via quizzes, providing tailored feedback.</li>
+          <li>Led extracurricular activities, integrating English into themes.</li>
         </ul>
       </article>
-
       <article class="subsection">
         <strong>Little Academy – Warsaw</strong><br>
         <em>English Teacher, 2023</em>
         <ul>
-          <li>Created playful English programs for preschoolers using songs, games, and storytelling.</li>
-          <li>Fostered a nurturing classroom, encouraging young learners to explore English.</li>
-          <li>Collaborated with parents and staff to support consistent language development.</li>
+          <li>Created playful English programs for preschoolers.</li>
+          <li>Fostered a nurturing classroom for language exploration.</li>
+          <li>Collaborated with parents to support language development.</li>
         </ul>
       </article>
     </section>
 
-    <section class="fade-in">
-      <h2>Leadership & Activities</h2>
-      <ul>
-        <li>Led “English Corner” sessions and themed events, boosting student and parent engagement.</li>
-        <li>Facilitated language workshops and cultural showcases for cross-cultural learning.</li>
-        <li>Enhanced parent relations at Mini Misie, contributing to a positive school culture.</li>
-        <li>Applied negotiation skills from brokering to foster collaboration among stakeholders.</li>
+    <section class="fade-in" id="portfolio">
+      <h2>Portfolio</h2>
+      <ul class="portfolio-grid">
+        <li class="portfolio-card" onclick="openModal('Web Tatweer Project', 'Developed a responsive e-commerce platform for a European client.')">
+          <strong>Web Tatweer E-Commerce</strong><br>Lead developer for a €50,000 project.
+        </li>
+        <li class="portfolio-card" onclick="openModal('English Corner Program', 'Designed interactive language workshops for preschoolers.')">
+          <strong>English Corner</strong><br>Increased parent engagement by 20%.
+        </li>
+        <li class="portfolio-card" onclick="openModal('Personal Website', 'Built a personal portfolio using HTML, CSS, and JavaScript.')">
+          <strong>Personal Website</strong><br>Showcase of coding projects.
+        </li>
       </ul>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in" id="skills">
       <h2>Skills & Languages</h2>
       <article class="subsection">
         <strong>Languages:</strong>
         <ul class="skills-grid">
-          <li>Arabic – Native (C2)</li>
-          <li>English – Advanced (C2) – <a href="https://cert.efset.org/en/3REsWB" target="_blank">EF SET Certificate</a></li>
-          <li>Polish – Intermediate (A2)</li>
+          <li>Arabic – Native (C2)<div class="progress-bar"><div style="width: 100%"></div></div></li>
+          <li>English – Advanced (C2) – <a href="https://cert.efset.org/en/3REsWB" target="_blank">EF SET</a><div class="progress-bar"><div style="width: 100%"></div></div></li>
+          <li>Polish – Intermediate (A2)<div class="progress-bar"><div style="width: 50%"></div></div></li>
         </ul>
       </article>
       <article class="subsection">
@@ -214,9 +350,9 @@
         <ul class="skills-grid">
           <li>Lesson Planning</li>
           <li>Classroom Management</li>
-          <li>Educational Tech (LiveKid, Canva)</li>
-          <li>Web Development (HTML, CSS)</li>
-          <li>Programming (Python, Java)</li>
+          <li>Educational Tech</li>
+          <li>Web Development</li>
+          <li>Programming</li>
           <li>Curriculum Design</li>
           <li>Public Speaking</li>
           <li>Negotiation</li>
@@ -224,7 +360,7 @@
       </article>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in" id="certifications">
       <h2>Certifications</h2>
       <ul>
         <li>120-Hour TESOL/TEFL Certificate – International Open Academy</li>
@@ -240,35 +376,74 @@
 
     <section class="fade-in">
       <h2>Interests</h2>
-      <p>Passionate about language education, early entrepreneurship, and leadership. Enthusiastic about technology, programming, cybersecurity, brokering, and voice acting.</p>
+      <p>Passionate about language education, entrepreneurship, and leadership. Enthusiastic about technology, programming, cybersecurity, brokering, and voice acting.</p>
+      <a href="#pdf-download" class="download-btn" role="button" aria-label="Download CV as PDF">Download PDF Version</a>
     </section>
 
-    <footer class="fade-in">
-      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a> • <a href="#pdf-download">Download PDF Version</a></p>
+    <footer>
+      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/your-profile" target="_blank"><i class="fab fa-github"></i> GitHub</a> • <a href="#qr-code" onclick="openModal('QR Code', 'Scan to visit my CV: https://your-hosted-cv-url.com')">View QR Code</a></p>
+      <p>Crafting Excellence in Education and Technology</p>
     </footer>
   </div>
 
-  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" role="button" aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
+  </div>
+  <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle Theme">
+    <i class="fas fa-sun"></i>
+  </div>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+      <button onclick="closeModal()" role="button" aria-label="Close Modal">Close</button>
+    </div>
   </div>
 
   <script>
-    // Fade-in animation on scroll
-    const sections = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    sections.forEach(section => observer.observe(section));
+    // Smooth scroll
+    function smoothScroll(event, id) {
+      event.preventDefault();
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
 
-    // Back to Top button visibility
+    // GSAP animations
+    gsap.utils.toArray('.fade-in').forEach(section => {
+      gsap.fromTo(section, { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: section, start: 'top 80%' }
+      });
+    });
+    gsap.utils.toArray('.progress-bar div').forEach(bar => {
+      gsap.to(bar, { width: bar.style.width, duration: 1.5, ease: 'power2.out', delay: 0.5 });
+    });
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const icon = document.querySelector('.theme-toggle i');
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('theme') === 'light') toggleTheme();
+
+    // Back to Top button
     const backToTop = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
+
+    // Modal for portfolio
+    function openModal(title, description) {
+      const modal = document.getElementById('modal');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-description').textContent = description;
+      modal.style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
   </script>
 </body>
 </html>
