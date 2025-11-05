@@ -6,8 +6,7 @@
   <meta name="description" content="Mahmoud Keweisy's Digital CV - English Teacher and Computer Science Student">
   <meta property="og:title" content="Mahmoud Keweisy - Digital CV">
   <meta property="og:description" content="Explore the professional journey of Mahmoud Keweisy, an English educator and Computer Science student based in Warsaw.">
-  <meta property="og:image" content="https://your-hosted-image.com/profile.jpg">
-  <meta property="og:url" content="https://your-hosted-cv-url.com">
+  <meta property="og:url" content="https://mahmoud-keweisy.github.io/">
   <title>Mahmoud Keweisy - Digital CV</title>
   <meta name="theme-color" content="#283540">
   <link rel="canonical" href="https://mahmoud-keweisy.github.io/">
@@ -29,8 +28,8 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/site.css">
   <!-- Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Content</a>
@@ -61,7 +60,7 @@
         <i class="fas fa-map-marker-alt"></i> Warsaw, Poland • 
         <i class="fas fa-envelope"></i> <a href="mailto:MahmoudKeweisy@gmail.com">MahmoudKeweisy@gmail.com</a> • 
         <i class="fas fa-phone"></i> +48 729 403 156 • 
-        <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener">linkedin.com/in/mahmoudkeweisy</a>
+        <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener noreferrer">linkedin.com/in/mahmoudkeweisy</a>
       </p>
     </header>
 
@@ -168,13 +167,13 @@
       <h2>Certifications</h2>
       <ul>
         <li>120-Hour TESOL/TEFL Certificate – International Open Academy</li>
-        <li><a href="https://navoica.pl/certificates/cf9e937df0d5430ebbd034eb90536396" target="_blank">Team Management – Wrocław learns online</a></li>
-        <li><a href="https://navoica.pl/certificates/33ab7ff79d7d4cc8a8740e99e51f0f40" target="_blank">Entrepreneurship for Young Students – University of Silesia</a></li>
-        <li><a href="https://coursera.org/verify/W8KNQX3EN9MX" target="_blank">Teach English Now! Foundational Principles – Arizona State University</a></li>
-        <li><a href="https://coursera.org/verify/SBRP4CPCHNG2" target="_blank">Teach English Now! Theories of Second Language Acquisition – Arizona State University</a></li>
-        <li><a href="https://navoica.pl/certificates/2fa64d312d464210b63910ed6460e02b" target="_blank">Website Development</a></li>
-        <li><a href="https://navoica.pl/certificates/5e8282e273ee4336ae7db75a592b5056" target="_blank">Basics of Programming</a></li>
-        <li><a href="https://navoica.pl/certificates/be9d3430af064f059258239e55753365" target="_blank">Academic Skills – Effective Learning</a></li>
+        <li><a href="https://navoica.pl/certificates/cf9e937df0d5430ebbd034eb90536396" target="_blank" rel="noopener noreferrer">Team Management – Wrocław learns online</a></li>
+        <li><a href="https://navoica.pl/certificates/33ab7ff79d7d4cc8a8740e99e51f0f40" target="_blank" rel="noopener noreferrer">Entrepreneurship for Young Students – University of Silesia</a></li>
+        <li><a href="https://coursera.org/verify/W8KNQX3EN9MX" target="_blank" rel="noopener noreferrer">Teach English Now! Foundational Principles – Arizona State University</a></li>
+        <li><a href="https://coursera.org/verify/SBRP4CPCHNG2" target="_blank" rel="noopener noreferrer">Teach English Now! Theories of Second Language Acquisition – Arizona State University</a></li>
+        <li><a href="https://navoica.pl/certificates/2fa64d312d464210b63910ed6460e02b" target="_blank" rel="noopener noreferrer">Website Development</a></li>
+        <li><a href="https://navoica.pl/certificates/5e8282e273ee4336ae7db75a592b5056" target="_blank" rel="noopener noreferrer">Basics of Programming</a></li>
+        <li><a href="https://navoica.pl/certificates/be9d3430af064f059258239e55753365" target="_blank" rel="noopener noreferrer">Academic Skills – Effective Learning</a></li>
       </ul>
     </section>
 
@@ -185,7 +184,7 @@
     </section>
 
     <footer class="site-footer">
-      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/Mahmoud-Keweisy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a> • <a href="#" onclick="event.preventDefault(); openModal('QR Code', 'Scan to visit my CV: https://mahmoud-keweisy.github.io')">View QR Code</a></p>
+      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/Mahmoud-Keweisy" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a> • <a href="#" onclick="event.preventDefault(); openModal('QR Code', 'Scan to visit my CV: https://mahmoud-keweisy.github.io')">View QR Code</a></p>
       <p>Crafting Excellence in Education and Technology</p>
     </footer>
   </div>
@@ -209,18 +208,20 @@
     }
 
     // GSAP animations
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-    gsap.utils.toArray('.fade-in').forEach(section => {
-      gsap.fromTo(section, { opacity: 0, y: 20 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
+    if (window.gsap) {
+      if (window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+      gsap.utils.toArray('.fade-in').forEach(section => {
+        gsap.fromTo(section, { opacity: 0, y: 20 }, {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+          scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
+        });
       });
-    });
-    gsap.utils.toArray('.progress-bar div').forEach(bar => {
-      gsap.to(bar, { width: bar.style.width, duration: 1.5, ease: 'power2.out', delay: 0.5 });
-    });
+      gsap.utils.toArray('.progress-bar div').forEach(bar => {
+        gsap.to(bar, { width: bar.style.width, duration: 1.5, ease: 'power2.out', delay: 0.5 });
+      });
+    }
 
     // Theme toggle (Cravelle-style variables with dark override)
     function applyTheme(theme) {
@@ -242,7 +243,7 @@
     const backToTop = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
+    }, { passive: true });
       // Mobile nav toggle
       const menuToggle = document.getElementById('menu-toggle');
       const primaryNav = document.getElementById('primary-nav');
