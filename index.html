@@ -200,51 +200,65 @@
   </div>
 
   <script>
-    // Smooth scroll
-    function smoothScroll(event, id) {
-      event.preventDefault();
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
+    // Run after DOM is parsed and deferred scripts (GSAP) are available
+    window.addEventListener('DOMContentLoaded', () => {
+      // Smooth scroll
+      window.smoothScroll = function(event, id) {
+        event.preventDefault();
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      };
 
-    // GSAP animations
-    if (window.gsap) {
-      if (window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-      }
-      gsap.utils.toArray('.fade-in').forEach(section => {
-        gsap.fromTo(section, { opacity: 0, y: 20 }, {
-          opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
+      // Animations (with no-GSAP fallback)
+      const hasGSAP = !!window.gsap;
+      if (hasGSAP) {
+        if (window.ScrollTrigger) {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+        gsap.utils.toArray('.fade-in').forEach(section => {
+          gsap.fromTo(section, { opacity: 0, y: 20 }, {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
+          });
         });
-      });
-      gsap.utils.toArray('.progress-bar .bar').forEach(bar => {
-        const target = bar.dataset.progress ? `${bar.dataset.progress}%` : '100%';
-        gsap.set(bar, { width: 0 });
-        gsap.to(bar, { width: target, duration: 1.5, ease: 'power2.out', delay: 0.4 });
-      });
-    }
-
-    // Theme toggle (Cravelle-style variables with dark override)
-    function applyTheme(theme) {
-      document.body.setAttribute('data-theme', theme);
-      const icon = document.querySelector('.theme-toggle i');
-      if (icon) {
-        if (theme === 'dark') { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-        else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+        gsap.utils.toArray('.progress-bar .bar').forEach(bar => {
+          const target = bar.dataset.progress ? `${bar.dataset.progress}%` : '100%';
+          gsap.set(bar, { width: 0 });
+          gsap.to(bar, { width: target, duration: 1.5, ease: 'power2.out', delay: 0.4 });
+        });
+      } else {
+        // Fallback: reveal content and set progress widths without animations
+        document.querySelectorAll('.fade-in').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        document.querySelectorAll('.progress-bar .bar').forEach(bar => {
+          const target = bar.dataset.progress ? `${bar.dataset.progress}%` : '100%';
+          bar.style.width = target;
+        });
       }
-    }
-    function toggleTheme() {
-      const next = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light';
-      localStorage.setItem('theme', next);
-      applyTheme(next);
-    }
-    applyTheme(localStorage.getItem('theme') || 'light');
 
-    // Back to Top button
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    }, { passive: true });
+      // Theme toggle (CSS variables)
+      function applyTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        const icon = document.querySelector('.theme-toggle i');
+        if (icon) {
+          if (theme === 'dark') { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+          else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+        }
+      }
+      window.toggleTheme = function() {
+        const next = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', next);
+        applyTheme(next);
+      }
+      applyTheme(localStorage.getItem('theme') || 'light');
+
+      // Back to Top button
+      const backToTop = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      }, { passive: true });
+
       // Mobile nav toggle
       const menuToggle = document.getElementById('menu-toggle');
       const primaryNav = document.getElementById('primary-nav');
@@ -261,16 +275,17 @@
         }));
       }
 
-    // Modal for portfolio
-    function openModal(title, description) {
-      const modal = document.getElementById('modal');
-      document.getElementById('modal-title').textContent = title;
-      document.getElementById('modal-description').textContent = description;
-      modal.style.display = 'flex';
-    }
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
+      // Modal for portfolio
+      window.openModal = function(title, description) {
+        const modal = document.getElementById('modal');
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-description').textContent = description;
+        modal.style.display = 'flex';
+      }
+      window.closeModal = function() {
+        document.getElementById('modal').style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
