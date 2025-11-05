@@ -8,7 +8,6 @@
   <meta property="og:description" content="Explore the professional journey of Mahmoud Keweisy, an English educator and Computer Science student based in Warsaw.">
   <meta property="og:url" content="https://mahmoud-keweisy.github.io/">
   <title>Mahmoud Keweisy - Digital CV</title>
-  <meta name="theme-color" content="#283540">
   <link rel="canonical" href="https://mahmoud-keweisy.github.io/">
   <!-- Social cards -->
   <meta property="og:type" content="website">
@@ -143,9 +142,9 @@
       <article class="subsection">
         <strong>Languages:</strong>
         <ul class="skills-grid">
-          <li>Arabic – Native (C2)<div class="progress-bar"><div style="width: 100%"></div></div></li>
-          <li>English – Advanced (C2) – <a href="https://cert.efset.org/en/3REsWB" target="_blank">EF SET</a><div class="progress-bar"><div style="width: 100%"></div></div></li>
-          <li>Polish – Intermediate (A2)<div class="progress-bar"><div style="width: 50%"></div></div></li>
+          <li>Arabic – Native (C2)<div class="progress-bar"><div class="bar" data-progress="100"></div></div></li>
+          <li>English – Advanced (C2) – <a href="https://cert.efset.org/en/3REsWB" target="_blank" rel="noopener noreferrer">EF SET</a><div class="progress-bar"><div class="bar" data-progress="100"></div></div></li>
+          <li>Polish – Intermediate (A2)<div class="progress-bar"><div class="bar" data-progress="50"></div></div></li>
         </ul>
       </article>
       <article class="subsection">
@@ -218,8 +217,10 @@
           scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
         });
       });
-      gsap.utils.toArray('.progress-bar div').forEach(bar => {
-        gsap.to(bar, { width: bar.style.width, duration: 1.5, ease: 'power2.out', delay: 0.5 });
+      gsap.utils.toArray('.progress-bar .bar').forEach(bar => {
+        const target = bar.dataset.progress ? `${bar.dataset.progress}%` : '100%';
+        gsap.set(bar, { width: 0 });
+        gsap.to(bar, { width: target, duration: 1.5, ease: 'power2.out', delay: 0.4 });
       });
     }
 

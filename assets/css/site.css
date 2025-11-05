@@ -1,5 +1,5 @@
 /* Navigation */
-.nav { position: sticky; top:0; z-index:100; background: var(--nav-bg); backdrop-filter:saturate(180%) blur(8px); box-shadow: var(--shadow-sm); }
+.nav { position: sticky; top:0; z-index:100; background: var(--nav-bg); -webkit-backdrop-filter:saturate(180%) blur(8px); backdrop-filter:saturate(180%) blur(8px); box-shadow: var(--shadow-sm); }
 .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 10px 16px; max-width: var(--max-width); margin:0 auto; }
 .nav-center a { margin: 0 10px; color: var(--nav-text); font-size: var(--text-sm); }
 .brand { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius: var(--radius-full); background: var(--accent); color:#fff; font-weight:700; }
@@ -26,7 +26,7 @@
 
 /* Progress bars */
 .progress-bar { background: var(--border-subtle); border-radius: 6px; height: 10px; margin-top:6px; overflow:hidden; }
-.progress-bar div { background: var(--accent); height:100%; transition: width 1s ease-in-out; }
+.progress-bar .bar { background: var(--accent); height:100%; transition: width 1s ease-in-out; }
 
 /* Modal */
 .modal { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.75); z-index:999; align-items:center; justify-content:center; padding: 0 16px; }
