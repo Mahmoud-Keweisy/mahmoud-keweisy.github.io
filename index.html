@@ -9,296 +9,57 @@
   <meta property="og:image" content="https://your-hosted-image.com/profile.jpg">
   <meta property="og:url" content="https://your-hosted-cv-url.com">
   <title>Mahmoud Keweisy - Digital CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Fonts and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Theme CSS (inspired by Cravelle) -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <!-- Animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #f0f2f5 0%, #e0e8f0 100%);
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-      color: #e0e0e0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 50px 20px;
-      position: relative;
-    }
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #c9a66b;
-      color: #1a1a1a;
-      padding: 8px;
-      z-index: 100;
-    }
-    .skip-link:focus {
-      top: 0;
-    }
-    header {
-      text-align: center;
-      padding-bottom: 40px;
-      border-bottom: 2px solid #c9a66b;
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    body.dark-mode header {
-      background: #2a2a2a;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 10px;
-      color: #5a6b7d;
-      font-size: 2.5em;
-    }
-    body.dark-mode h1, body.dark-mode h2 {
-      color: #d4af37;
-    }
-    a {
-      color: #4682b4;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    body.dark-mode a {
-      color: #5dade2;
-    }
-    a:hover {
-      color: #5dade2;
-    }
-    body.dark-mode a:hover {
-      color: #87cefa;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      margin-top: 40px;
-      border-bottom: 1px solid #c9a66b;
-      padding-bottom: 10px;
-      color: #5a6b7d;
-      font-weight: 400;
-    }
-    body.dark-mode h2 {
-      color: #d4af37;
-    }
-    ul {
-      padding-left: 0;
-    }
-    .subsection ul, ul.portfolio-grid {
-      list-style-type: none;
-    }
-    .skills-grid, .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
-    .skills-grid li, .portfolio-grid li {
-      background: #ffffff;
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-    }
-    body.dark-mode .skills-grid li, body.dark-mode .portfolio-grid li {
-      background: #3a3a3a;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-    .skills-grid li:hover, .portfolio-grid li:hover {
-      transform: scale(1.05);
-    }
-    .progress-bar {
-      background: #e0e0e0;
-      border-radius: 5px;
-      height: 10px;
-      margin-top: 5px;
-      overflow: hidden;
-    }
-    body.dark-mode .progress-bar {
-      background: #4a4a4a;
-    }
-    .progress-bar div {
-      background: #c9a66b;
-      height: 100%;
-      transition: width 1s ease-in-out;
-    }
-    .contact-info i {
-      margin-right: 10px;
-      color: #c9a66b;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .back-to-top, .theme-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #c9a66b;
-      color: #1a1a1a;
-      padding: 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2em;
-      z-index: 100;
-    }
-    .theme-toggle {
-      right: 70px;
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      background: #ffffff;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 50;
-    }
-    body.dark-mode nav {
-      background: #2a2a2a;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-    nav a {
-      margin: 0 15px;
-      font-size: 0.9em;
-      color: #5a6b7d;
-    }
-    body.dark-mode nav a {
-      color: #d4af37;
-    }
-    nav a:hover {
-      color: #4682b4;
-    }
-    body.dark-mode nav a:hover {
-      color: #87cefa;
-    }
-    .portfolio-card {
-      cursor: pointer;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      color: #333;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    body.dark-mode .modal-content {
-      background: #2a2a2a;
-      color: #e0e0e0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    .download-btn {
-      display: inline-block;
-      background: #c9a66b;
-      color: #1a1a1a;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-top: 20px;
-      transition: transform 0.3s ease;
-    }
-    .download-btn:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid #c9a66b;
-      font-size: 0.9em;
-      background: #ffffff;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
-    }
-    body.dark-mode footer {
-      background: #2a2a2a;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-    }
-    footer a {
-      color: #4682b4;
-    }
-    body.dark-mode footer a {
-      color: #5dade2;
-    }
-    footer a:hover {
-      color: #5dade2;
-    }
-    body.dark-mode footer a:hover {
-      color: #87cefa;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 30px 15px;
-      }
-      h1 {
-        font-size: 2em;
-      }
-      img {
-        width: 100px;
-        height: 100px;
-      }
-      .skills-grid, .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-      nav a {
-        margin: 0 5px;
-        font-size: 0.8em;
-      }
-    }
-  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Content</a>
-  <nav>
-    <div class="container">
-      <a href="#professional-summary" onclick="smoothScroll(event, 'professional-summary')">Summary</a>
-      <a href="#education" onclick="smoothScroll(event, 'education')">Education</a>
-      <a href="#experience" onclick="smoothScroll(event, 'experience')">Experience</a>
-      <a href="#portfolio" onclick="smoothScroll(event, 'portfolio')">Portfolio</a>
-      <a href="#skills" onclick="smoothScroll(event, 'skills')">Skills</a>
-      <a href="#certifications" onclick="smoothScroll(event, 'certifications')">Certifications</a>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="#main-content" class="brand">MK</a>
+      </div>
+      <div class="nav-center">
+        <a href="#professional-summary" onclick="smoothScroll(event, 'professional-summary')">Summary</a>
+        <a href="#education" onclick="smoothScroll(event, 'education')">Education</a>
+        <a href="#experience" onclick="smoothScroll(event, 'experience')">Experience</a>
+        <a href="#portfolio" onclick="smoothScroll(event, 'portfolio')">Portfolio</a>
+        <a href="#skills" onclick="smoothScroll(event, 'skills')">Skills</a>
+        <a href="#certifications" onclick="smoothScroll(event, 'certifications')">Certifications</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+      </div>
     </div>
   </nav>
   <div class="container" id="main-content">
-    <header class="fade-in">
-      <img src="profile.jpg" alt="Mahmoud Keweisy's Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
+    <header class="page-header fade-in">
+      <img src="assets/images/profile-placeholder.svg" alt="Mahmoud Keweisy's Profile Picture" class="avatar">
       <h1>Mahmoud Keweisy</h1>
       <p class="contact-info">
         <i class="fas fa-map-marker-alt"></i> Warsaw, Poland • 
         <i class="fas fa-envelope"></i> <a href="mailto:MahmoudKeweisy@gmail.com">MahmoudKeweisy@gmail.com</a> • 
         <i class="fas fa-phone"></i> +48 729 403 156 • 
-        <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">linkedin.com/in/mahmoudkeweisy</a>
+        <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener">linkedin.com/in/mahmoudkeweisy</a>
       </p>
     </header>
 
-    <section class="fade-in" id="professional-summary">
+    <section class="fade-in section" id="professional-summary">
       <h2>Professional Summary</h2>
       <p>Versatile English language educator with experience teaching diverse age groups, from preschool to adults, across various settings. Currently pursuing a B.Sc. in Computer Science, with expertise in multidisciplinary projects and digital tools. Certified in TESOL-TEFL and team management, I excel in designing engaging learning experiences and driving tech innovation. <strong>Let’s connect to explore how I can contribute to your team’s success.</strong></p>
     </section>
 
-    <section class="fade-in" id="education">
+    <section class="fade-in section" id="education">
       <h2>Education</h2>
       <ul>
         <li><strong>Bachelor of Science in Computer Science</strong> – Akademia Ekonomiczno-Humanistyczna w Warszawie  2021–Present, Warsaw<br>
@@ -308,10 +69,10 @@
       </ul>
     </section>
 
-    <section class="fade-in" id="experience">
+    <section class="fade-in section" id="experience">
       <h2>Experience</h2>
       <article class="subsection">
-        <strong style="text-align: center; display: block;">Web App Developer</strong> Web Tatweer, Warsaw<br>
+        <strong>Web App Developer</strong> Web Tatweer, Warsaw<br>
         <em>Jul 2024 – Present</em>
         <ul>
           <li>Design and develop responsive web applications using modern frameworks.</li>
@@ -321,7 +82,7 @@
         </ul>
       </article>
       <article class="subsection">
-        <strong style="text-align: center; display: block;">Poland Branch Manager</strong> – Web Tatweer, Warsaw<br>
+        <strong>Poland Branch Manager</strong> – Web Tatweer, Warsaw<br>
         <em>Jan 2024 – Present</em>
         <ul>
           <li>Lead Poland branch operations, driving regional tech growth.</li>
@@ -331,7 +92,7 @@
         </ul>
       </article>
       <article class="subsection">
-        <strong style="text-align: center; display: block;">English Teacher</strong> Mini Misie Preschool, Warsaw<br>
+        <strong>English Teacher</strong> Mini Misie Preschool, Warsaw<br>
         <em>Feb 2024 – Present</em>
         <ul>
           <li>Deliver engaging English lessons for preschoolers using storytelling, music, and sensory play.</li>
@@ -342,7 +103,7 @@
         </ul>
       </article>
       <article class="subsection">
-        <strong style="text-align: center; display: block;">English Teacher</strong> Little Academy, Warsaw<br>
+        <strong>English Teacher</strong> Little Academy, Warsaw<br>
         <em>2023</em>
         <ul>
           <li>Created playful English programs for preschoolers.</li>
@@ -352,7 +113,7 @@
       </article>
     </section>
 
-    <section class="fade-in" id="portfolio">
+    <section class="fade-in section" id="portfolio">
       <h2>Portfolio</h2>
       <ul class="portfolio-grid">
         <li class="portfolio-card" onclick="openModal('Web Tatweer Project', 'Developed a responsive e-commerce platform for a European client.')">
@@ -367,7 +128,7 @@
       </ul>
     </section>
 
-    <section class="fade-in" id="skills">
+    <section class="fade-in section" id="skills">
       <h2>Skills & Languages</h2>
       <article class="subsection">
         <strong>Languages:</strong>
@@ -392,7 +153,7 @@
       </article>
     </section>
 
-    <section class="fade-in" id="certifications">
+    <section class="fade-in section" id="certifications">
       <h2>Certifications</h2>
       <ul>
         <li>120-Hour TESOL/TEFL Certificate – International Open Academy</li>
@@ -406,24 +167,21 @@
       </ul>
     </section>
 
-    <section class="fade-in">
+    <section class="fade-in section">
       <h2>Interests</h2>
       <p>Passionate about language education, entrepreneurship, and leadership. Enthusiastic about technology, programming, cybersecurity, brokering, and voice acting.</p>
-      <a href="#pdf-download" class="download-btn" role="button" aria-label="Download CV as PDF">Download PDF Version</a>
+      <a href="#pdf-download" class="btn" role="button" aria-label="Download CV as PDF">Download PDF Version</a>
     </section>
 
-    <footer>
-      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/your-profile" target="_blank"><i class="fab fa-github"></i> GitHub</a> • <a href="#qr-code" onclick="openModal('QR Code', 'Scan to visit my CV: https://your-hosted-cv-url.com')">View QR Code</a></p>
+    <footer class="site-footer">
+      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/Mahmoud-Keweisy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a> • <a href="#qr-code" onclick="openModal('QR Code', 'Scan to visit my CV: https://your-hosted-cv-url.com')">View QR Code</a></p>
       <p>Crafting Excellence in Education and Technology</p>
     </footer>
   </div>
 
-  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" role="button" aria-label="Back to Top">
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
-  </div>
-  <div class="theme-toggle" onclick="toggleTheme()" role="button" aria-label="Toggle Theme">
-    <i class="fas fa-sun"></i>
-  </div>
+  </button>
   <div class="modal" id="modal">
     <div class="modal-content">
       <h3 id="modal-title"></h3>
@@ -440,25 +198,34 @@
     }
 
     // GSAP animations
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
     gsap.utils.toArray('.fade-in').forEach(section => {
       gsap.fromTo(section, { opacity: 0, y: 20 }, {
         opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: section, start: 'top 80%' }
+        scrollTrigger: window.ScrollTrigger ? { trigger: section, start: 'top 80%' } : undefined
       });
     });
     gsap.utils.toArray('.progress-bar div').forEach(bar => {
       gsap.to(bar, { width: bar.style.width, duration: 1.5, ease: 'power2.out', delay: 0.5 });
     });
 
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
+    // Theme toggle (Cravelle-style variables with dark override)
+    function applyTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
       const icon = document.querySelector('.theme-toggle i');
-      icon.classList.toggle('fa-sun');
-      icon.classList.toggle('fa-moon');
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      if (icon) {
+        if (theme === 'dark') { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+        else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      }
     }
-    if (localStorage.getItem('theme') === 'dark') toggleTheme();
+    function toggleTheme() {
+      const next = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    }
+    applyTheme(localStorage.getItem('theme') || 'light');
 
     // Back to Top button
     const backToTop = document.querySelector('.back-to-top');
