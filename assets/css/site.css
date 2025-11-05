@@ -5,6 +5,7 @@
 .brand { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius: var(--radius-full); background: var(--accent); color:#fff; font-weight:700; }
 .theme-toggle { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius: var(--radius-full); background: var(--surface); color: var(--nav-text); box-shadow: var(--shadow-sm); }
 .theme-toggle:hover { background: var(--surface-elevated); }
+.hamburger { display:none; width:40px; height:40px; border-radius: var(--radius-full); background: var(--surface); color: var(--nav-text); box-shadow: var(--shadow-sm); margin-left: 6px; }
 
 /* Header */
 .page-header { text-align:center; padding-bottom: var(--spacing-8); border-bottom:1px solid var(--border); background: var(--bg-elevated); box-shadow: var(--shadow-sm); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
@@ -43,9 +44,12 @@
 .back-to-top { position:fixed; bottom:20px; right:20px; background: var(--accent); color:#fff; width:44px; height:44px; border-radius: var(--radius-full); display:none; align-items:center; justify-content:center; box-shadow: var(--shadow-lg); }
 
 /* Responsive tweaks */
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .container { padding: var(--spacing-10) var(--spacing-3); }
-  .nav-center { display:none; }
+  .hamburger { display:inline-flex; align-items:center; justify-content:center; }
+  .nav-center { display:none; position:absolute; left:0; right:0; top: var(--nav-height); background: var(--bg-elevated); box-shadow: var(--shadow-md); padding: 10px 16px; z-index: 101; }
+  .nav-center.is-open { display:flex; flex-direction:column; gap: 10px; }
+  .nav-center a { padding: 10px 6px; }
 }
 
 /* Simple reveal */

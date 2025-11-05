@@ -9,6 +9,15 @@
   <meta property="og:image" content="https://your-hosted-image.com/profile.jpg">
   <meta property="og:url" content="https://your-hosted-cv-url.com">
   <title>Mahmoud Keweisy - Digital CV</title>
+  <meta name="theme-color" content="#283540">
+  <link rel="canonical" href="https://mahmoud-keweisy.github.io/">
+  <!-- Social cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mahmoud-keweisy.github.io/assets/images/og-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mahmoud Keweisy - Digital CV">
+  <meta name="twitter:description" content="Explore Mahmoud Keweisy’s professional journey and projects.">
+  <meta name="twitter:image" content="https://mahmoud-keweisy.github.io/assets/images/og-card.svg">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,12 +34,12 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to Content</a>
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main">
     <div class="container nav-inner">
       <div class="nav-left">
         <a href="#main-content" class="brand">MK</a>
       </div>
-      <div class="nav-center">
+      <div class="nav-center" id="primary-nav">
         <a href="#professional-summary" onclick="smoothScroll(event, 'professional-summary')">Summary</a>
         <a href="#education" onclick="smoothScroll(event, 'education')">Education</a>
         <a href="#experience" onclick="smoothScroll(event, 'experience')">Experience</a>
@@ -39,7 +48,8 @@
         <a href="#certifications" onclick="smoothScroll(event, 'certifications')">Certifications</a>
       </div>
       <div class="nav-right">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-sun" aria-hidden="true"></i></button>
+        <button class="hamburger" id="menu-toggle" aria-label="Menu" aria-controls="primary-nav" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
       </div>
     </div>
   </nav>
@@ -175,7 +185,7 @@
     </section>
 
     <footer class="site-footer">
-      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/Mahmoud-Keweisy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a> • <a href="#qr-code" onclick="openModal('QR Code', 'Scan to visit my CV: https://your-hosted-cv-url.com')">View QR Code</a></p>
+      <p>© 2025 Mahmoud Keweisy • <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a> • <a href="https://github.com/Mahmoud-Keweisy" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a> • <a href="#" onclick="event.preventDefault(); openModal('QR Code', 'Scan to visit my CV: https://mahmoud-keweisy.github.io')">View QR Code</a></p>
       <p>Crafting Excellence in Education and Technology</p>
     </footer>
   </div>
@@ -233,6 +243,21 @@
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
+      // Mobile nav toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const primaryNav = document.getElementById('primary-nav');
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = primaryNav.classList.toggle('is-open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+          if (primaryNav.classList.contains('is-open')) {
+            primaryNav.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        }));
+      }
 
     // Modal for portfolio
     function openModal(title, description) {
