@@ -1,0 +1,86 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#F2F2F2',
+          100: '#E6E6E6',
+          200: '#CCCCCC',
+          300: '#9FA3A6',
+          400: '#636B73',
+          500: '#283540',
+          600: '#1F2A33',
+          700: '#141D26',
+          800: '#0A1019',
+          900: '#00010D',
+        },
+        accent: {
+          50: '#F2F2F2',
+          100: '#E6E6E6',
+          200: '#CCCCCC',
+          300: '#9FA3A6',
+          400: '#636B73',
+          500: '#283540',
+          600: '#1F2A33',
+          700: '#141D26',
+          800: '#0A1019',
+          900: '#00010D',
+        },
+        neutral: {
+          50: '#F2F2F2',
+          100: '#E6E6E6',
+          200: '#CCCCCC',
+          300: '#9FA3A6',
+          400: '#636B73',
+          500: '#283540',
+          600: '#1F2A33',
+          700: '#141D26',
+          800: '#0A1019',
+          900: '#00010D',
+        },
+        slate: {
+          50: '#F2F2F2',
+          100: '#E6E6E6',
+          200: '#CCCCCC',
+          300: '#9FA3A6',
+          400: '#636B73',
+          500: '#283540',
+          600: '#1F2A33',
+          700: '#141D26',
+          800: '#0A1019',
+          900: '#00010D',
+          950: '#000000',
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+        'scale-in': 'scaleIn 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+};

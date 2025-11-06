@@ -1,0 +1,631 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for the colour palette */
+:root {
+  --color-primary-50: #F2F2F2;
+  --color-primary-100: #E6E6E6;
+  --color-primary-200: #CCCCCC;
+  --color-primary-300: #9FA3A6;
+  --color-primary-400: #636B73;
+  --color-primary-500: #283540;
+  --color-primary-600: #1F2A33;
+  --color-primary-700: #141D26;
+  --color-primary-800: #0A1019;
+  --color-primary-900: #00010D;
+
+  --color-accent-50: #F2F2F2;
+  --color-accent-100: #E6E6E6;
+  --color-accent-200: #CCCCCC;
+  --color-accent-300: #9FA3A6;
+  --color-accent-400: #636B73;
+  --color-accent-500: #283540;
+  --color-accent-600: #1F2A33;
+  --color-accent-700: #141D26;
+  --color-accent-800: #0A1019;
+  --color-accent-900: #00010D;
+
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  /* Performance optimizations */
+  --scroll-behavior: smooth;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: var(--scroll-behavior);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    /* Prevent font scaling in landscape - vendor prefixes for compatibility */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: common-ligatures;
+    overflow-x: hidden;
+    /* Prevent rubber-band scrolling on body to allow our custom pull-to-top */
+    overscroll-behavior-y: contain;
+    /* Improve rendering on mobile */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 2px solid var(--color-primary-300);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-primary-500: #000000;
+      --color-primary-600: #000000;
+    }
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply rounded-md border border-transparent bg-primary-500 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
+  }
+
+  .btn-secondary {
+    @apply rounded-md border border-white/30 bg-white/20 font-medium text-neutral-900 shadow-sm backdrop-blur-md transition-colors duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:border-primary-400/30 dark:bg-primary-900/40 dark:text-white dark:hover:bg-primary-800/50 dark:focus:ring-offset-slate-950;
+  }
+
+  /* Button sizing and layout utilities */
+  .btn {
+    @apply inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap px-5 text-sm;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3 text-sm;
+  }
+
+  .section-heading {
+    @apply mb-4 text-3xl font-bold text-neutral-900 dark:text-neutral-100 md:text-4xl;
+  }
+
+  .section-subheading {
+    @apply mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-200;
+  }
+
+  .container-responsive {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/30 bg-white/40 p-5 shadow-2xl backdrop-blur-3xl backdrop-saturate-150 transition-all duration-300 hover:bg-white/50 dark:border-white/15 dark:bg-black/30 dark:shadow-2xl dark:shadow-black/60 sm:p-6;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.7) 50%,
+      rgba(255, 255, 255, 0.85) 100%
+    );
+  }
+
+  .dark .card {
+    background-image: linear-gradient(
+      135deg,
+      rgba(0, 1, 13, 0.5) 0%,
+      rgba(40, 53, 64, 0.6) 50%,
+      rgba(0, 1, 13, 0.55) 100%
+    );
+  }
+
+  .skill-bar {
+    @apply h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-slate-800;
+  }
+
+  .skill-progress {
+    @apply h-full rounded-full bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-1000 ease-out;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  /* Accessibility helper classes */
+  .sr-only {
+    @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+  }
+
+  .not-sr-only {
+    @apply static m-0 h-auto w-auto overflow-visible whitespace-normal p-0;
+  }
+}
+
+/* Glass utilities and liquid background */
+@layer utilities {
+  .glass {
+    @apply rounded-2xl border border-white/25 bg-white/50 backdrop-blur-3xl backdrop-saturate-150 dark:border-white/10 dark:bg-black/35;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+  }
+
+  .dark .glass {
+    background-image: linear-gradient(
+      135deg,
+      rgba(0, 1, 13, 0.45) 0%,
+      rgba(40, 53, 64, 0.55) 50%,
+      rgba(0, 1, 13, 0.5) 100%
+    );
+  }
+  .glass-strong {
+    @apply rounded-2xl border border-white/35 bg-white/55 shadow-2xl backdrop-blur-3xl backdrop-saturate-150 dark:border-white/15 dark:bg-black/40 dark:shadow-2xl dark:shadow-black/70;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.65) 50%,
+      rgba(255, 255, 255, 0.85) 100%
+    );
+  }
+
+  .dark .glass-strong {
+    background-image: linear-gradient(
+      135deg,
+      rgba(0, 1, 13, 0.55) 0%,
+      rgba(40, 53, 64, 0.65) 50%,
+      rgba(0, 1, 13, 0.6) 100%
+    );
+  }
+  /* Strobe animation for contact warning */
+  @keyframes strobeBox {
+    0%,
+    100% {
+      box-shadow:
+        0 0 8px rgba(249, 115, 22, 0.3),
+        0 0 16px rgba(249, 115, 22, 0.15),
+        inset 0 0 20px rgba(249, 115, 22, 0.05);
+      filter: brightness(1);
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+    50% {
+      box-shadow:
+        0 0 30px rgba(249, 115, 22, 0.8),
+        0 0 60px rgba(249, 115, 22, 0.5),
+        0 0 90px rgba(249, 115, 22, 0.3),
+        inset 0 0 30px rgba(249, 115, 22, 0.15);
+      filter: brightness(1.15);
+      border-color: rgba(249, 115, 22, 0.6);
+    }
+  }
+  .strobe-warning {
+    animation: strobeBox 1s ease-in-out infinite;
+  }
+  @keyframes strobeIconRed {
+    0%,
+    100% {
+      transform: scale(1);
+      /* iOS System Red: rgb(255, 59, 48) */
+      filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.75))
+        drop-shadow(0 0 20px rgba(255, 59, 48, 0.5));
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 30px rgba(255, 59, 48, 1))
+        drop-shadow(0 0 60px rgba(255, 59, 48, 0.85))
+        drop-shadow(0 0 90px rgba(255, 59, 48, 0.6));
+      opacity: 1;
+    }
+  }
+  /* Ensure the glow applies to the actual icon graphic */
+  .strobe-icon-red {
+    position: relative;
+    will-change: transform, filter;
+  }
+  .strobe-icon-red :is(img, svg) {
+    animation: strobeIconRed 1s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .strobe-delay-half {
+    animation-delay: 0.5s;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .container-responsive {
+      @apply px-4;
+    }
+
+    .section-heading {
+      @apply text-2xl;
+    }
+
+    .card {
+      @apply p-4;
+    }
+  }
+
+  /* Touch target optimization for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    a,
+    [role='button'] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Add touch feedback to interactive elements */
+    button:active,
+    a:active,
+    [role='button']:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Smooth card interactions on touch */
+    .card {
+      transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out;
+    }
+
+    .card:active {
+      transform: scale(0.99);
+    }
+  }
+
+  /* Swipe gesture visual hint - subtle edge highlight */
+  @media (hover: none) and (pointer: coarse) {
+    @supports (padding: env(safe-area-inset-right)) {
+      body::after {
+        content: '';
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 60px;
+        background: linear-gradient(to left, rgba(40, 53, 64, 0.3), transparent);
+        border-radius: 3px 0 0 3px;
+        pointer-events: none;
+        opacity: 0;
+        animation: edgePulse 3s ease-in-out infinite;
+        z-index: 9999;
+      }
+
+      @keyframes edgePulse {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  /* Improve text readability on mobile */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px; /* Prevent iOS zoom on input focus */
+    }
+
+    input,
+    textarea,
+    select {
+      font-size: 16px; /* Prevent iOS zoom */
+    }
+  }
+
+  /* Enhanced mobile optimization for very small devices */
+  @media (max-width: 360px) {
+    .section-heading {
+      @apply text-xl;
+    }
+
+    .container-responsive {
+      @apply px-3;
+    }
+
+    .card {
+      @apply p-3;
+    }
+  }
+
+  /* Better landscape mode handling on mobile */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .min-h-screen {
+      min-height: 100vh;
+    }
+
+    section {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+  }
+}
+
+/* Print styles for CV layout */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.3;
+    color: black;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide navigation and non-essential elements */
+  header,
+  nav,
+  .contact-form,
+  footer,
+  button:not(.print-visible),
+  .mobile-menu,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  /* Adjust section spacing for print */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem !important;
+    padding: 0.25rem 0 !important;
+  }
+
+  /* Hero section adjustments */
+  #hero {
+    min-height: 0 !important;
+    padding: 0.5rem 0 !important;
+    text-align: center;
+    page-break-after: avoid;
+  }
+
+  /* Skills layout for print */
+  .skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.25rem !important;
+    page-break-inside: avoid;
+  }
+
+  /* Experience and education layout */
+  .timeline-item {
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem !important;
+    border-left: 2px solid #283540 !important;
+    padding-left: 0.5rem !important;
+  }
+
+  /* Ensure text is readable */
+  h1 {
+    font-size: 16pt !important;
+    margin-bottom: 0.25rem !important;
+  }
+  h2 {
+    font-size: 14pt !important;
+    margin-bottom: 0.25rem !important;
+    border-bottom: 1px solid #283540;
+    padding-bottom: 0.1rem;
+  }
+  h3 {
+    font-size: 12pt !important;
+    margin-bottom: 0.2rem !important;
+  }
+  h4 {
+    font-size: 11pt !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  p {
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Remove shadows and borders */
+  .card,
+  .shadow-lg,
+  .shadow-md {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    margin-bottom: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+
+  /* Links styling */
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Contact info visibility */
+  .contact-info {
+    display: block !important;
+  }
+
+  /* Projects grid adjustment */
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Hide interactive elements */
+  .hover\:scale-105,
+  .transition-transform,
+  .animate-pulse {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Timeline adjustments */
+  .timeline-item::before {
+    display: none !important;
+  }
+
+  /* Skills progress bars */
+  .skill-progress {
+    background: linear-gradient(
+      to right,
+      #283540 var(--progress),
+      #e5e7eb var(--progress)
+    ) !important;
+  }
+
+  /* Certificate and project images */
+  img {
+    max-width: 2cm !important;
+    height: auto !important;
+  }
+
+  /* Optimize spacing */
+  .container-responsive {
+    padding: 0 !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    border: 2px solid currentColor;
+  }
+
+  .card {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Utility animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading animation for skill bars */
+@keyframes fillSkillBar {
+  from {
+    width: 0;
+  }
+}
+
+/* Pulse animation for contact form submission */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse;
+}
+
+/* Focus trap for modals/menus */
+.focus-trap {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-300;
+}
