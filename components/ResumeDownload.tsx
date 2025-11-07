@@ -9,8 +9,7 @@ interface ResumeDownloadProps {
 
 const ResumeDownload = ({ variant = 'hero' }: ResumeDownloadProps) => {
   const handleDownload = () => {
-    const basePath = process.env.NODE_ENV === 'production' ? '/CV' : '';
-    const pdfPath = `${basePath}/resume.pdf`;
+    const pdfPath = '/resume.pdf';
     window.open(encodeURI(pdfPath), '_blank');
   };
 

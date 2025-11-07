@@ -72,8 +72,6 @@ export interface Profile {
   };
 }
 
-const basePath = process.env.NODE_ENV === 'production' ? '/CV' : '';
-
 export const profile: Profile = {
   name: 'Mahmoud Keweisy',
   title: 'Team Leader | English Language Educator | Junior Web Developer | Aspiring EdTech Entrepreneur',
@@ -82,7 +80,7 @@ export const profile: Profile = {
   phone: '+48 729 403 156',
   summary:
     'Versatile and dedicated English language educator with experience teaching diverse age groups, from preschool children to adult learners, across various educational settings. Currently pursuing a B.Sc. in Computer Science, with hands-on involvement in multidisciplinary projects and strong proficiency in digital tools and educational academic technologies. Certified in TESOL-TEFL and team management, demonstrating proven leadership, communication, and organisational skills. Adept at designing engaging learning experiences, managing classrooms, and integrating technology to enhance outcomes and foster cross-cultural understanding.',
-  avatar: `${basePath}/avatar.jpg`,
+  avatar: '/avatar.jpg',
 
   experience: [
     {
@@ -202,7 +200,7 @@ export const profile: Profile = {
       technologies: ['Entrepreneurship', 'Business Development', 'International Trade', 'Consulting', 'Language Services', 'Digital Solutions'],
       repo: 'https://github.com/Cravelle/Cravelle-Source.git',
       demo: 'https://cravelle.netlify.app',
-      image: `${basePath}/projects/cravelle.svg`,
+      image: '/projects/cravelle.svg',
     },
   ],
 
