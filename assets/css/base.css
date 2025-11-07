@@ -1,0 +1,20 @@
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; }
+html { scroll-behavior:smooth; scroll-padding-top: var(--nav-offset); height:100%; font-size:16px; }
+body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height:100%; padding-top: var(--nav-height); letter-spacing:-0.011em; }
+a { color: inherit; text-decoration:none; transition: opacity .25s ease; }
+a:hover, a:focus { opacity:.8; }
+img { max-width:100%; height:auto; display:block; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; }
+
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height:1.25; color: var(--text); font-weight:600; letter-spacing:-0.02em; margin-bottom: var(--spacing-4); }
+h1 { font-size: var(--text-5xl); line-height:1.05; font-weight:700; }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+
+:focus-visible { outline:2px solid var(--accent); outline-offset:4px; border-radius: var(--radius-sm); }
+
+.container { max-width: var(--max-width-text); margin: 0 auto; padding: var(--spacing-12) var(--spacing-4); position:relative; }
+
+/* Skip link */
+.skip-link { position:absolute; top:-40px; left:0; background: var(--accent); color:#fff; padding:8px 10px; z-index:999; border-radius: var(--radius-sm); }
+.skip-link:focus { top:0; }
