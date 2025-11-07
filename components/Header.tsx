@@ -3,9 +3,7 @@
 import { motion } from 'framer-motion';
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-
 import { profile } from '../data/profile';
-
 import ResumeDownload from './ResumeDownload';
 import ThemeToggle from './ThemeToggle';
 
@@ -70,16 +68,10 @@ const Header = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 80;
-      const supportsSmooth = 'scrollBehavior' in document.documentElement.style;
-
-      if (supportsSmooth) {
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth',
-        });
-      } else {
-        window.scrollTo(0, offsetTop);
-      }
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -217,10 +209,19 @@ const MobileMenu = ({
         }
         if (e.key === 'Tab') {
           const focusableSelectors = [
-            'a[href]','button:not([disabled])','input:not([disabled])','select:not([disabled])','textarea:not([disabled])','[tabindex]:not([tabindex="-1"])',
+            'a[href]',
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])',
           ];
-          const nodes = panelRef.current.querySelectorAll<HTMLElement>(focusableSelectors.join(','));
-          const focusable = Array.from(nodes).filter((el) => el.offsetParent !== null || el === document.activeElement);
+          const nodes = panelRef.current.querySelectorAll<HTMLElement>(
+            focusableSelectors.join(',')
+          );
+          const focusable = Array.from(nodes).filter(
+            (el) => el.offsetParent !== null || el === document.activeElement
+          );
           if (focusable.length === 0) return;
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
@@ -240,7 +241,6 @@ const MobileMenu = ({
         document.body.style.paddingRight = originalPaddingRight;
         window.cancelAnimationFrame(focusTimer);
         document.removeEventListener('keydown', handleKeyDown);
-        // Return focus to the toggle button
         returnFocusEl?.focus();
       };
     }
@@ -310,7 +310,10 @@ const MobileMenu = ({
                 className="flex h-full flex-col p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-[calc(1.5rem+env(safe-area-inset-top))]"
               >
                 <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
-                  <h2 id="mobile-menu-title" className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                  <h2
+                    id="mobile-menu-title"
+                    className="text-lg font-semibold text-neutral-900 dark:text-neutral-100"
+                  >
                     Menu
                   </h2>
                   <button

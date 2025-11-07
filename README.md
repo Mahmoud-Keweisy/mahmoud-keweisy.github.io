@@ -1,30 +1,61 @@
 # Mahmoud Keweisy – Digital CV
 
-This repository hosts a static, themed Digital CV for Mahmoud Keweisy. It merges:
+A modern, responsive digital CV built with Next.js, React, TypeScript, and Tailwind CSS. Features include dark mode, smooth animations, print-friendly layout, and full accessibility support.
 
-- Structure: Adapted from the CV project flow (hero/header → summary → experience → education → skills → certifications → portfolio → footer)
-- Theme: Cravelle-inspired premium design (variables, typography, spacing, dark mode)
-- Content: Source of truth is this repo’s `index.html`
+## Features
 
-## Preview locally
+- 🎨 Modern design with glass-morphism effects
+- 🌓 Dark mode with system preference detection
+- 📱 Fully responsive (mobile, tablet, desktop)
+- ♿ WCAG 2.1 AA accessibility compliant
+- 🖨️ Print-optimized CV layout
+- ⚡ Optimized performance with lazy loading
+- 🎭 Smooth animations with Framer Motion
+- 📧 Contact form integration
+- 🔍 SEO optimized with structured data
 
-You can open `index.html` directly or serve it for smooth scrolling and consistent asset loading.
+## Tech Stack
 
-```bash
-python3 -m http.server 8000
-# Visit http://localhost:8000
-```
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Form Handling**: React Hook Form
+- **Deployment**: Static export for GitHub Pages
 
-## Files of interest
+## Getting Started
 
-- `index.html` – Page markup and minimal JS (theme toggle, animations)
-- `assets/css/variables.css` – Design tokens (colors, typography, spacing, dark mode)
-- `assets/css/base.css` – Base/reset and typography
-- `assets/css/site.css` – Page-specific styles (nav, sections, grids, modal, buttons)
-- `assets/images/profile-placeholder.svg` – Placeholder avatar (replace with a real image as needed)
+Install dependencies:
 
-## Customizing
+\`\`\`bash
+npm install
+\`\`\`
 
-- Replace Open Graph meta tags in `index.html` with real image and final URL.
-- Swap `assets/images/profile-placeholder.svg` with your own profile image.
-- Adjust colors/accents in `assets/css/variables.css` if you prefer a different palette.
+Run development server:
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+Build for production:
+
+\`\`\`bash
+npm run build
+\`\`\`
+
+## Project Structure
+
+- \`app/\` - Next.js App Router pages and layouts
+- \`components/\` - React components
+- \`data/\` - Profile data and content
+- \`hooks/\` - Custom React hooks
+- \`lib/\` - Utility functions
+- \`public/\` - Static assets
+
+## Customization
+
+Update your information in \`data/profile.ts\` to customize the CV content including experience, education, skills, certifications, and projects.
+
+## License
+
+© 2025 Mahmoud Keweisy. All rights reserved.

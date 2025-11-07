@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Custom Properties for the colour palette */
 :root {
   --color-primary-50: #F2F2F2;
   --color-primary-100: #E6E6E6;
@@ -27,17 +26,13 @@
   --color-accent-900: #00010D;
 
   --font-inter: 'Inter', system-ui, sans-serif;
-
-  /* Performance optimizations */
   --scroll-behavior: smooth;
 }
 
-/* Base styles */
 @layer base {
   html {
     scroll-behavior: var(--scroll-behavior);
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-    /* Prevent font scaling in landscape - vendor prefixes for compatibility */
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -50,19 +45,15 @@
     -moz-osx-font-smoothing: grayscale;
     font-variant-ligatures: common-ligatures;
     overflow-x: hidden;
-    /* Prevent rubber-band scrolling on body to allow our custom pull-to-top */
     overscroll-behavior-y: contain;
-    /* Improve rendering on mobile */
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Focus styles for accessibility */
   *:focus {
     outline: 2px solid var(--color-primary-300);
     outline-offset: 2px;
   }
 
-  /* High contrast mode support */
   @media (prefers-contrast: high) {
     :root {
       --color-primary-500: #000000;
@@ -70,7 +61,6 @@
     }
   }
 
-  /* Respect user's motion preferences */
   @media (prefers-reduced-motion: reduce) {
     :root {
       --scroll-behavior: auto;
@@ -87,7 +77,6 @@
   }
 }
 
-/* Component styles */
 @layer components {
   .btn-primary {
     @apply rounded-md border border-transparent bg-primary-500 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
@@ -97,7 +86,6 @@
     @apply rounded-md border border-white/30 bg-white/20 font-medium text-neutral-900 shadow-sm backdrop-blur-md transition-colors duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:border-primary-400/30 dark:bg-primary-900/40 dark:text-white dark:hover:bg-primary-800/50 dark:focus:ring-offset-slate-950;
   }
 
-  /* Button sizing and layout utilities */
   .btn {
     @apply inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap px-5 text-sm;
   }
@@ -149,7 +137,6 @@
     @apply h-full rounded-full bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-1000 ease-out;
   }
 
-  /* Animation classes */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
@@ -162,7 +149,6 @@
     animation: scaleIn 0.3s ease-out forwards;
   }
 
-  /* Accessibility helper classes */
   .sr-only {
     @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
   }
@@ -172,7 +158,6 @@
   }
 }
 
-/* Glass utilities and liquid background */
 @layer utilities {
   .glass {
     @apply rounded-2xl border border-white/25 bg-white/50 backdrop-blur-3xl backdrop-saturate-150 dark:border-white/10 dark:bg-black/35;
@@ -210,7 +195,6 @@
       rgba(0, 1, 13, 0.6) 100%
     );
   }
-  /* Strobe animation for contact warning */
   @keyframes strobeBox {
     0%,
     100% {
@@ -251,7 +235,6 @@
       opacity: 1;
     }
   }
-  /* Ensure the glow applies to the actual icon graphic */
   .strobe-icon-red {
     position: relative;
     will-change: transform, filter;
@@ -264,7 +247,6 @@
     animation-delay: 0.5s;
   }
 
-  /* Mobile-specific optimizations */
   @media (max-width: 768px) {
     .container-responsive {
       @apply px-4;
@@ -279,7 +261,6 @@
     }
   }
 
-  /* Touch target optimization for mobile */
   @media (hover: none) and (pointer: coarse) {
     button,
     a,
@@ -288,7 +269,6 @@
       min-width: 44px;
     }
 
-    /* Add touch feedback to interactive elements */
     button:active,
     a:active,
     [role='button']:active {
@@ -296,7 +276,6 @@
       transition: transform 0.1s ease-out;
     }
 
-    /* Smooth card interactions on touch */
     .card {
       transition:
         transform 0.2s ease-out,
@@ -308,7 +287,6 @@
     }
   }
 
-  /* Swipe gesture visual hint - subtle edge highlight */
   @media (hover: none) and (pointer: coarse) {
     @supports (padding: env(safe-area-inset-right)) {
       body::after {
@@ -339,20 +317,18 @@
     }
   }
 
-  /* Improve text readability on mobile */
   @media (max-width: 640px) {
     body {
-      font-size: 16px; /* Prevent iOS zoom on input focus */
+      font-size: 16px;
     }
 
     input,
     textarea,
     select {
-      font-size: 16px; /* Prevent iOS zoom */
+      font-size: 16px;
     }
   }
 
-  /* Enhanced mobile optimization for very small devices */
   @media (max-width: 360px) {
     .section-heading {
       @apply text-xl;
@@ -367,7 +343,6 @@
     }
   }
 
-  /* Better landscape mode handling on mobile */
   @media (max-height: 500px) and (orientation: landscape) {
     .min-h-screen {
       min-height: 100vh;
@@ -380,7 +355,6 @@
   }
 }
 
-/* Print styles for CV layout */
 @media print {
   @page {
     size: A4;
@@ -403,7 +377,6 @@
     display: none !important;
   }
 
-  /* Hide navigation and non-essential elements */
   header,
   nav,
   .contact-form,
@@ -414,14 +387,12 @@
     display: none !important;
   }
 
-  /* Adjust section spacing for print */
   section {
     page-break-inside: avoid;
     margin-bottom: 0.5rem !important;
     padding: 0.25rem 0 !important;
   }
 
-  /* Hero section adjustments */
   #hero {
     min-height: 0 !important;
     padding: 0.5rem 0 !important;
@@ -429,7 +400,6 @@
     page-break-after: avoid;
   }
 
-  /* Skills layout for print */
   .skills-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -437,7 +407,6 @@
     page-break-inside: avoid;
   }
 
-  /* Experience and education layout */
   .timeline-item {
     page-break-inside: avoid;
     margin-bottom: 0.5rem !important;
@@ -445,7 +414,6 @@
     padding-left: 0.5rem !important;
   }
 
-  /* Ensure text is readable */
   h1 {
     font-size: 16pt !important;
     margin-bottom: 0.25rem !important;
@@ -469,7 +437,6 @@
     margin-bottom: 0.25rem !important;
   }
 
-  /* Remove shadows and borders */
   .card,
   .shadow-lg,
   .shadow-md {
@@ -479,7 +446,6 @@
     padding: 0.25rem !important;
   }
 
-  /* Links styling */
   a {
     color: black !important;
     text-decoration: none !important;
@@ -491,19 +457,16 @@
     color: #666;
   }
 
-  /* Contact info visibility */
   .contact-info {
     display: block !important;
   }
 
-  /* Projects grid adjustment */
   .projects-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 0.25rem !important;
   }
 
-  /* Hide interactive elements */
   .hover\:scale-105,
   .transition-transform,
   .animate-pulse {
@@ -511,12 +474,10 @@
     animation: none !important;
   }
 
-  /* Timeline adjustments */
   .timeline-item::before {
     display: none !important;
   }
 
-  /* Skills progress bars */
   .skill-progress {
     background: linear-gradient(
       to right,
@@ -525,18 +486,15 @@
     ) !important;
   }
 
-  /* Certificate and project images */
   img {
     max-width: 2cm !important;
     height: auto !important;
   }
 
-  /* Optimize spacing */
   .container-responsive {
     padding: 0 !important;
   }
 
-  /* Page breaks */
   .page-break-before {
     page-break-before: always;
   }
@@ -550,7 +508,6 @@
   }
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
   .btn-primary {
     border: 2px solid currentColor;
@@ -561,7 +518,6 @@
   }
 }
 
-/* Utility animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -593,14 +549,12 @@
   }
 }
 
-/* Loading animation for skill bars */
 @keyframes fillSkillBar {
   from {
     width: 0;
   }
 }
 
-/* Pulse animation for contact form submission */
 @keyframes pulse {
   0%,
   100% {
@@ -611,7 +565,6 @@
   }
 }
 
-/* Performance optimizations */
 .will-change-transform {
   will-change: transform;
 }
@@ -620,12 +573,10 @@
   will-change: opacity;
 }
 
-/* Loading states */
 .loading {
   @apply animate-pulse;
 }
 
-/* Focus trap for modals/menus */
 .focus-trap {
   @apply focus:outline-none focus:ring-2 focus:ring-primary-300;
 }

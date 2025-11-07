@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import React from 'react';
-
 import { profile } from '../data/profile';
 
 const About = () => {
