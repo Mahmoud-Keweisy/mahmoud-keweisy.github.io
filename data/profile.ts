@@ -200,7 +200,7 @@ export const profile: Profile = {
       technologies: ['Entrepreneurship', 'Business Development', 'International Trade', 'Consulting', 'Language Services', 'Digital Solutions'],
       repo: 'https://github.com/Cravelle/Cravelle-Source.git',
       demo: 'https://cravelle.netlify.app',
-      image: '/projects/cravelle.svg',
+      image: '/projects/cravelle.png',
     },
   ],
 
