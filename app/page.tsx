@@ -7,31 +7,23 @@ import Hero from '../components/Hero';
 import PerformanceOptimizer from '../components/PerformanceOptimizer';
 import { usePullToTop } from '../hooks/useTouchGestures';
 
-const About = dynamic(() => import('../components/About'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
-});
+const About = dynamic(() => import('../components/About'), { ssr: false });
 const ExperienceTimeline = dynamic(
   () => import('../components/ExperienceTimeline'),
-  {
-    loading: () => <div className="py-20 text-center">Loading...</div>,
-  }
+  { ssr: false }
 );
 const Education = dynamic(() => import('../components/Education'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
+  ssr: false,
 });
-const Skills = dynamic(() => import('../components/Skills'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
-});
+const Skills = dynamic(() => import('../components/Skills'), { ssr: false });
 const Certifications = dynamic(() => import('../components/Certifications'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
+  ssr: false,
 });
-const Projects = dynamic(() => import('../components/Projects'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
-});
+const Projects = dynamic(() => import('../components/Projects'), { ssr: false });
 const ContactForm = dynamic(() => import('../components/ContactForm'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
+  ssr: false,
 });
-const Footer = dynamic(() => import('../components/Footer'));
+const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 
 export default function HomePage() {
   usePullToTop();

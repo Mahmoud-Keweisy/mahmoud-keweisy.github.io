@@ -186,10 +186,12 @@ const MobileMenu = ({
       const returnFocusEl = toggleButtonRef.current;
       const originalOverflow = document.body.style.overflow;
       const originalPaddingRight = document.body.style.paddingRight;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
 
       const scrollbarWidth =
         window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
 
       const focusTimer = window.requestAnimationFrame(() => {
@@ -238,6 +240,7 @@ const MobileMenu = ({
 
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
         document.body.style.paddingRight = originalPaddingRight;
         window.cancelAnimationFrame(focusTimer);
         document.removeEventListener('keydown', handleKeyDown);
@@ -281,13 +284,13 @@ const MobileMenu = ({
       {mounted &&
         isOpen &&
         createPortal(
-          <div className="md:hidden">
+          <div className="fixed inset-0 z-[90] md:hidden">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={toggleMenu}
               role="presentation"
               aria-hidden="true"
@@ -298,7 +301,7 @@ const MobileMenu = ({
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="glass-strong fixed right-0 top-0 z-[100] h-full w-72 overflow-y-auto overscroll-contain shadow-2xl"
+              className="glass-strong absolute right-0 top-0 h-full w-[min(85vw,320px)] overflow-y-auto overscroll-contain shadow-2xl"
               role="dialog"
               aria-modal="true"
               aria-labelledby="mobile-menu-title"
