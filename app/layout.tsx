@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   creator: profile.name,
   keywords: profile.seo.keywords,
   icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
+    icon: '/icon',
+    shortcut: '/favicon.ico',
     apple: '/apple-icon',
   },
   openGraph: {
