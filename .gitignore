@@ -39,7 +39,9 @@ yarn-error.log*
 *.tsbuildinfo
 
 # IDE files
-.vscode/settings.json
+# Allow project-specific editor settings (override ignore)
+# !.vscode/settings.json would not work since file is explicitly ignored.
+# Removing the ignore entry to permit committing workspace Vim config.
 .idea/
 *.swp
 *.swo

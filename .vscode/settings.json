@@ -1,0 +1,12 @@
+{
+  // Use system clipboard for all yank/delete/put in VSCodeVim
+  "vim.useSystemClipboard": true,
+  // Make unnamed register mirror system clipboard ("+)
+  "vim.clipboard": "unnamedplus",
+  // Optional: keep VSCode cursor style predictable in Vim modes
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.visual": "block",
+  // Optional: disable VSCode default copy-on-select to avoid surprises
+  "editor.selectionClipboard": false
+}
