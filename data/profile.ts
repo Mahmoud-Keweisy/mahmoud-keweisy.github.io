@@ -202,6 +202,21 @@ export const profile: Profile = {
       demo: 'https://cravelle.netlify.app',
       image: '/projects/cravelle.png',
     },
+    {
+      name: 'Mini Misie Preschool Workspace',
+      description:
+        'A visual showcase of classroom activities, interactive English corners, themed events, and learning materials I created for preschool learners at Mini Misie. Highlights hands-on lesson design, parent engagement initiatives, and child-centered educational environments.',
+      technologies: [
+        'Early Childhood Education',
+        'Lesson Design',
+        'Interactive Learning',
+        'Parent Engagement',
+        'Activity Planning',
+        'Creative Resources',
+      ],
+      demo: '/projects/mini-misie/',
+      image: '/projects/mini-misie/preschool1.jpg',
+    },
   ],
 
   social: {

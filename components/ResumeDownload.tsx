@@ -14,7 +14,26 @@ const ResumeDownload = ({ variant = 'hero' }: ResumeDownloadProps) => {
   };
 
   const handlePrint = () => {
-    window.print();
+    const pdfPath = '/resume.pdf';
+    const printWindow = window.open(encodeURI(pdfPath), '_blank');
+    // Attempt to auto-trigger print once the PDF is loaded (same-origin)
+    if (printWindow) {
+      const triggerPrint = () => {
+        try {
+          printWindow.focus();
+          // Some browsers may block this; it's a best-effort.
+          printWindow.print();
+        } catch (e) {
+          // Silently fail; user can print manually.
+        }
+      };
+      // If the document is already loaded (cached), print immediately; otherwise wait.
+      if (printWindow.document?.readyState === 'complete') {
+        triggerPrint();
+      } else {
+        printWindow.addEventListener('load', triggerPrint, { once: true });
+      }
+    }
   };
 
   const baseClasses =

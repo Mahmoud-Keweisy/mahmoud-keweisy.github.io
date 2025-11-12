@@ -56,6 +56,14 @@ npm run build
 
 Update your information in \`data/profile.ts\` to customize the CV content including experience, education, skills, certifications, and projects.
 
+### Adding Project Galleries
+
+To add a project with an image gallery:
+
+- Place images under `public/projects/<project-slug>/` (e.g., `public/projects/mini-misie/`).
+- Add a project entry in `data/profile.ts` with `name`, `description`, `technologies`, optional `image` (cover), and set `demo` to the internal route (e.g., `/projects/mini-misie/`).
+- Create a page at `app/projects/<project-slug>/page.tsx` to render the gallery. The existing `mini-misie` page is an example that auto-loads images from the corresponding `public` folder.
+
 ## License
 
 © 2025 Mahmoud Keweisy. All rights reserved.
