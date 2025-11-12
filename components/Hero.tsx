@@ -69,11 +69,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
             className="mb-8 flex items-center justify-center text-neutral-700 dark:text-neutral-200 lg:justify-start"
           >
-            <svg
-              className="mr-2 h-5 w-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
+            <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
                 d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -107,9 +103,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .getElementById('contact')
-                  ?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               <svg
@@ -252,20 +246,14 @@ const Hero = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="cursor-pointer text-neutral-400 transition-colors duration-200 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-200"
-          onClick={() =>
-            document
-              .getElementById('about')
-              ?.scrollIntoView({ behavior: 'smooth' })
-          }
+          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           role="button"
           tabIndex={0}
           aria-label="Scroll to about section"
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              document
-                .getElementById('about')
-                ?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
             }
           }}
         >

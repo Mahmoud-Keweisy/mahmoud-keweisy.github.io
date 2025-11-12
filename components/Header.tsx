@@ -81,17 +81,11 @@ const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'glass border-b border-white/40 dark:border-primary-400/20'
-          : 'bg-transparent'
+        isScrolled ? 'glass border-b border-white/40 dark:border-primary-400/20' : 'bg-transparent'
       }`}
       role="banner"
     >
-      <nav
-        className="container-responsive py-3"
-        role="navigation"
-        aria-label="Main navigation"
-      >
+      <nav className="container-responsive py-3" role="navigation" aria-label="Main navigation">
         <div className="flex items-center justify-between">
           <motion.div
             whileHover={{ scale: 1.01 }}
@@ -188,8 +182,7 @@ const MobileMenu = ({
       const originalPaddingRight = document.body.style.paddingRight;
       const originalHtmlOverflow = document.documentElement.style.overflow;
 
-      const scrollbarWidth =
-        window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -273,11 +266,7 @@ const MobileMenu = ({
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          {isOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          )}
+          {isOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
         </svg>
       </button>
 
@@ -326,11 +315,7 @@ const MobileMenu = ({
                     type="button"
                     ref={closeButtonRef}
                   >
-                    <svg
-                      className="h-6 w-6"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -354,9 +339,7 @@ const MobileMenu = ({
                           ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-200'
                           : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-slate-800/70 dark:hover:text-white'
                       }`}
-                      aria-current={
-                        activeSection === item.id ? 'page' : undefined
-                      }
+                      aria-current={activeSection === item.id ? 'page' : undefined}
                       type="button"
                     >
                       {item.label}

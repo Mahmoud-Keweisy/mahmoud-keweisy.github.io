@@ -10,13 +10,26 @@ export function formatDateEU(dateString: string): string {
     return date.toLocaleDateString('en-GB', {
       day: '2-digit',
       month: '2-digit',
-      year: 'numeric'
+      year: 'numeric',
     });
   }
 
   if (/^\d{4}-\d{2}$/.test(dateString)) {
     const [year, month] = dateString.split('-');
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
     const monthIndex = parseInt(month, 10) - 1;
     return `${monthNames[monthIndex] || month} ${year}`;
   }

@@ -23,9 +23,7 @@ const ExperienceTimeline = () => {
         <div className="absolute bottom-0 left-8 top-0 w-0.5 transform bg-primary-200 dark:bg-primary-100/20 md:left-1/2 md:-translate-x-px"></div>
 
         {[...profile.experience]
-          .sort(
-            (a, b) => new Date(b.start).getTime() - new Date(a.start).getTime()
-          )
+          .sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime())
           .map((exp, index) => (
             <motion.div
               key={index}
@@ -47,10 +45,7 @@ const ExperienceTimeline = () => {
                 }`}
               >
                 {' '}
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="card timeline-item"
-                >
+                <motion.div whileHover={{ scale: 1.02, y: -5 }} className="card timeline-item">
                   {/* Header with improved layout */}
                   <div className="mb-4 flex flex-col gap-3">
                     <h3 className="text-xl font-semibold leading-tight text-neutral-900 dark:text-neutral-100">

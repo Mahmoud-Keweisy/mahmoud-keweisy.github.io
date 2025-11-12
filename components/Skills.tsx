@@ -68,9 +68,7 @@ const Skills = () => {
                     <motion.div
                       className="skill-progress"
                       initial={{ width: 0 }}
-                      animate={
-                        isVisible ? { width: `${skill.level}%` } : { width: 0 }
-                      }
+                      animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
                       transition={{
                         duration: 1.5,
                         delay: categoryIndex * 0.1 + skillIndex * 0.1,
@@ -97,30 +95,23 @@ const Skills = () => {
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {profile.skills.length}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-300">
-              Technical Skills
-            </div>
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">Technical Skills</div>
           </div>
 
           <div className="card text-center">
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {categories.length}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-300">
-              Skill Categories
-            </div>
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">Skill Categories</div>
           </div>
 
           <div className="card text-center">
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {Math.round(
-                profile.skills.reduce((sum, skill) => sum + skill.level, 0) /
-                  profile.skills.length
+                profile.skills.reduce((sum, skill) => sum + skill.level, 0) / profile.skills.length
               )}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-300">
-              Avg. Proficiency
-            </div>
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">Avg. Proficiency</div>
           </div>
 
           <div className="card text-center">
@@ -130,15 +121,16 @@ const Skills = () => {
                 const totalMonths = profile.experience.reduce((sum, exp) => {
                   const start = new Date(exp.start);
                   const end = exp.end.toLowerCase() === 'present' ? now : new Date(exp.end);
-                  const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+                  const months =
+                    (end.getFullYear() - start.getFullYear()) * 12 +
+                    (end.getMonth() - start.getMonth());
                   return sum + Math.max(0, months);
                 }, 0);
                 return Math.max(1, Math.floor(totalMonths / 12));
-              })()}+
+              })()}
+              +
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-300">
-              Years Experience
-            </div>
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">Years Experience</div>
           </div>
         </div>
       </motion.div>

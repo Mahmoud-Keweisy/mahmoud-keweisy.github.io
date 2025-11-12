@@ -30,12 +30,10 @@ const About = () => {
                 Background
               </h3>
               <p className="leading-relaxed text-neutral-700 dark:text-neutral-200">
-                Currently pursuing a B.Sc. in Computer Science at Akademia
-                Ekonomiczno-Humanistyczna w Warszawie and based in Warsaw,
-                Poland. I combine my passion for English education with
-                technology—teaching preschoolers at Mini Misie and building web
-                applications while managing operations for the Poland branch at
-                Web Tatweer.
+                Currently pursuing a B.Sc. in Computer Science at Akademia Ekonomiczno-Humanistyczna
+                w Warszawie and based in Warsaw, Poland. I combine my passion for English education
+                with technology—teaching preschoolers at Mini Misie and building web applications
+                while managing operations for the Poland branch at Web Tatweer.
               </p>
             </motion.div>
 

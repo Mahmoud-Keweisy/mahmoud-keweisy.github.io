@@ -32,13 +32,14 @@ export default function MiniMisieGalleryPage() {
       </p>
 
       {images.length === 0 ? (
-        <p className="text-center text-neutral-600 dark:text-neutral-300">
-          No images found.
-        </p>
+        <p className="text-center text-neutral-600 dark:text-neutral-300">No images found.</p>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((src, i) => (
-            <div key={i} className="relative overflow-hidden rounded-lg border border-neutral-200 dark:border-slate-700">
+            <div
+              key={i}
+              className="relative overflow-hidden rounded-lg border border-neutral-200 dark:border-slate-700"
+            >
               <div className="relative h-64 bg-neutral-100 dark:bg-slate-800">
                 <Image
                   src={src}

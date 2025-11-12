@@ -29,11 +29,7 @@ const Footer = () => {
               Crafting Excellence in Education and Technology
             </p>
             <div className="flex items-center text-sm text-neutral-400">
-              <svg
-                className="mr-2 h-4 w-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+              <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -82,9 +78,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="mb-4 text-lg font-semibold dark:text-neutral-100">
-              Let&apos;s Connect
-            </h4>
+            <h4 className="mb-4 text-lg font-semibold dark:text-neutral-100">Let&apos;s Connect</h4>
             <p className="mb-4 text-neutral-300 dark:text-neutral-200">
               Let&apos;s connect and build something amazing together.
             </p>
@@ -139,12 +133,7 @@ const Footer = () => {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Email"
               >
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -160,12 +149,7 @@ const Footer = () => {
               href={`mailto:${profile.email}`}
               className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-800 transition-colors duration-200 hover:text-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900 dark:text-primary-200 dark:hover:text-primary-100"
             >
-              <svg
-                className="mr-2 h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -190,11 +174,10 @@ const Footer = () => {
               © {currentYear} {profile.name}. All rights reserved.
             </h4>
             <p className="mb-3 text-xs leading-relaxed text-neutral-400">
-              All content on this website, including text, images, graphics, and
-              code, is protected by copyright and other intellectual property
-              laws. You may view and print pages for personal, non-commercial
-              use only. Any other use, reproduction, or distribution requires
-              prior written permission from the copyright owner.
+              All content on this website, including text, images, graphics, and code, is protected
+              by copyright and other intellectual property laws. You may view and print pages for
+              personal, non-commercial use only. Any other use, reproduction, or distribution
+              requires prior written permission from the copyright owner.
             </p>
             <p className="text-xs text-neutral-400">
               For permissions or copyright concerns, please contact:{' '}
@@ -215,12 +198,7 @@ const Footer = () => {
               whileTap={{ y: 0 }}
               aria-label="Scroll to top"
             >
-              <svg
-                className="mr-2 h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -48,9 +48,7 @@ const ResumeDownload = ({ variant = 'hero' }: ResumeDownloadProps) => {
   const buttonClasses = `${baseClasses} ${variantClasses[variant]}`;
 
   return (
-    <div
-      className={`flex gap-2 ${variant === 'mobile' ? 'flex-col' : 'flex-row'}`}
-    >
+    <div className={`flex gap-2 ${variant === 'mobile' ? 'flex-col' : 'flex-row'}`}>
       <motion.button
         onClick={handleDownload}
         className={buttonClasses}

@@ -11,10 +11,7 @@ interface TouchGestureOptions {
   velocityThreshold?: number;
 }
 
-export function useTouchGestures(
-  elementRef: RefObject<HTMLElement>,
-  options: TouchGestureOptions
-) {
+export function useTouchGestures(elementRef: RefObject<HTMLElement>, options: TouchGestureOptions) {
   const {
     onSwipeUp,
     onSwipeDown,
@@ -24,9 +21,7 @@ export function useTouchGestures(
     velocityThreshold = 0.3,
   } = options;
 
-  const touchStart = useRef<{ x: number; y: number; time: number } | null>(
-    null
-  );
+  const touchStart = useRef<{ x: number; y: number; time: number } | null>(null);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -80,15 +75,7 @@ export function useTouchGestures(
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [
-    elementRef,
-    onSwipeUp,
-    onSwipeDown,
-    onSwipeLeft,
-    onSwipeRight,
-    threshold,
-    velocityThreshold,
-  ]);
+  }, [elementRef, onSwipeUp, onSwipeDown, onSwipeLeft, onSwipeRight, threshold, velocityThreshold]);
 }
 
 export function usePullToTop() {
@@ -118,8 +105,7 @@ export function usePullToTop() {
     const handleTouchEnd = () => {
       if (!isDragging) return;
 
-      document.body.style.transition =
-        'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+      document.body.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       document.body.style.transform = 'translateY(0)';
 
       if (window.scrollY < 100) {

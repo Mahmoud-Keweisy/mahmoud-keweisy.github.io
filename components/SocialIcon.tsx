@@ -2,14 +2,7 @@
 
 import React from 'react';
 
-type SocialName =
-  | 'linkedin'
-  | 'github'
-  | 'youtube'
-  | 'instagram'
-  | 'telegram'
-  | 'tiktok'
-  | 'email';
+type SocialName = 'linkedin' | 'github' | 'youtube' | 'instagram' | 'telegram' | 'tiktok' | 'email';
 
 interface SocialIconProps extends React.SVGProps<SVGSVGElement> {
   name: SocialName;

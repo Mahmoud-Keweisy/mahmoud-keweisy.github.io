@@ -16,9 +16,7 @@ interface ContactFormData {
 const ContactForm = () => {
   const isLocked = true;
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    'idle' | 'success' | 'error'
-  >('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
 
   const {
@@ -53,21 +51,16 @@ const ContactForm = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setSubmitMessage(
-          result.message ||
-            "Thank you for your message! I'll get back to you soon."
+          result.message || "Thank you for your message! I'll get back to you soon."
         );
         reset();
       } else {
         setSubmitStatus('error');
-        setSubmitMessage(
-          result.error || 'Something went wrong. Please try again.'
-        );
+        setSubmitMessage(result.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setSubmitStatus('error');
-      setSubmitMessage(
-        'Network error. Please check your connection and try again.'
-      );
+      setSubmitMessage('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -84,8 +77,7 @@ const ContactForm = () => {
       >
         <h2 className="section-heading">Get In Touch</h2>
         <p className="section-subheading">
-          Questions about English lessons, collaborations, or content? Let’s
-          connect.
+          Questions about English lessons, collaborations, or content? Let’s connect.
         </p>
       </motion.div>
 
@@ -102,10 +94,9 @@ const ContactForm = () => {
               Let&apos;s Start a Conversation
             </h3>
             <p className="mb-8 leading-relaxed text-neutral-700 dark:text-neutral-200">
-              Whether you’re looking for English tutoring, have a learning idea
-              in mind, or just want to connect, I’d love to hear from you. I’m
-              always open to opportunities and collaborations in education and
-              content creation.
+              Whether you’re looking for English tutoring, have a learning idea in mind, or just
+              want to connect, I’d love to hear from you. I’m always open to opportunities and
+              collaborations in education and content creation.
             </p>
 
             <div className="contact-info space-y-6">
@@ -156,9 +147,7 @@ const ContactForm = () => {
                   <h4 className="mb-1 font-semibold text-neutral-900 dark:text-neutral-100">
                     Location
                   </h4>
-                  <p className="text-neutral-600 dark:text-neutral-300">
-                    {profile.location}
-                  </p>
+                  <p className="text-neutral-600 dark:text-neutral-300">{profile.location}</p>
                 </div>
               </div>
 
@@ -182,9 +171,7 @@ const ContactForm = () => {
                   <h4 className="mb-1 font-semibold text-neutral-900 dark:text-neutral-100">
                     Response Time
                   </h4>
-                  <p className="text-neutral-600 dark:text-neutral-300">
-                    Usually within 24 hours
-                  </p>
+                  <p className="text-neutral-600 dark:text-neutral-300">Usually within 24 hours</p>
                 </div>
               </div>
             </div>
@@ -298,18 +285,13 @@ const ContactForm = () => {
                           />
                         </svg>
                       </div>
-                      <p className="text-sm font-semibold">
-                        Temporarily Unavailable.
-                      </p>
+                      <p className="text-sm font-semibold">Temporarily Unavailable.</p>
                     </div>
                   </div>
                 </div>
               </>
             )}
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="contact-form space-y-6"
-            >
+            <form onSubmit={handleSubmit(onSubmit)} className="contact-form space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -340,11 +322,7 @@ const ContactForm = () => {
                   aria-describedby={errors.name ? 'name-error' : undefined}
                 />
                 {errors.name && (
-                  <p
-                    id="name-error"
-                    className="mt-1 text-sm text-red-600"
-                    role="alert"
-                  >
+                  <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
                     {errors.name.message}
                   </p>
                 )}
@@ -380,11 +358,7 @@ const ContactForm = () => {
                   aria-describedby={errors.email ? 'email-error' : undefined}
                 />
                 {errors.email && (
-                  <p
-                    id="email-error"
-                    className="mt-1 text-sm text-red-600"
-                    role="alert"
-                  >
+                  <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
                     {errors.email.message}
                   </p>
                 )}
@@ -416,16 +390,10 @@ const ContactForm = () => {
                   } ${isLocked ? 'cursor-not-allowed opacity-60' : ''}`}
                   disabled={isLocked}
                   placeholder="Tell me about your project, opportunity, or just say hello!"
-                  aria-describedby={
-                    errors.message ? 'message-error' : undefined
-                  }
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
                 {errors.message && (
-                  <p
-                    id="message-error"
-                    className="mt-1 text-sm text-red-600"
-                    role="alert"
-                  >
+                  <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
                     {errors.message.message}
                   </p>
                 )}
@@ -445,9 +413,7 @@ const ContactForm = () => {
                 type="submit"
                 disabled={isSubmitting || isLocked}
                 className={`btn btn-lg btn-primary w-full ${
-                  isSubmitting || isLocked
-                    ? 'cursor-not-allowed opacity-50'
-                    : 'hover:scale-105'
+                  isSubmitting || isLocked ? 'cursor-not-allowed opacity-50' : 'hover:scale-105'
                 }`}
                 whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
@@ -478,12 +444,7 @@ const ContactForm = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center">
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -510,9 +471,7 @@ const ContactForm = () => {
                   <div className="flex items-start">
                     <svg
                       className={`mr-2 mt-0.5 h-5 w-5 flex-shrink-0 ${
-                        submitStatus === 'success'
-                          ? 'text-green-500'
-                          : 'text-red-500'
+                        submitStatus === 'success' ? 'text-green-500' : 'text-red-500'
                       }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"

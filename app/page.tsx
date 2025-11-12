@@ -8,10 +8,9 @@ import PerformanceOptimizer from '../components/PerformanceOptimizer';
 import { usePullToTop } from '../hooks/useTouchGestures';
 
 const About = dynamic(() => import('../components/About'), { ssr: false });
-const ExperienceTimeline = dynamic(
-  () => import('../components/ExperienceTimeline'),
-  { ssr: false }
-);
+const ExperienceTimeline = dynamic(() => import('../components/ExperienceTimeline'), {
+  ssr: false,
+});
 const Education = dynamic(() => import('../components/Education'), {
   ssr: false,
 });
@@ -34,10 +33,7 @@ export default function HomePage() {
       <Header />
 
       <main id="main-content" className="relative">
-        <section
-          id="hero"
-          className="flex min-h-screen items-center justify-center"
-        >
+        <section id="hero" className="flex min-h-screen items-center justify-center">
           <Hero />
         </section>
 

@@ -23,8 +23,7 @@ export default function Icon() {
             fontSize: 36,
             fontWeight: 800,
             letterSpacing: -1,
-            fontFamily:
-              'system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif',
+            fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif',
           }}
         >
           OM

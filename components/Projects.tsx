@@ -116,9 +116,7 @@ const Projects = () => {
 
                   <div className="flex items-center">
                     <div className="mr-2 h-2 w-2 rounded-full bg-green-500"></div>
-                    <span className="text-xs text-neutral-600 dark:text-neutral-300">
-                      Active
-                    </span>
+                    <span className="text-xs text-neutral-600 dark:text-neutral-300">Active</span>
                   </div>
                 </div>
               </div>

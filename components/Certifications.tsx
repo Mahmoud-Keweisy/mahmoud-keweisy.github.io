@@ -42,10 +42,7 @@ const Certifications = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="card flex h-full flex-col"
-              >
+              <motion.div whileHover={{ scale: 1.02, y: -5 }} className="card flex h-full flex-col">
                 <div className="mb-4 flex items-start gap-4">
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-900/30">
                     <svg
@@ -146,10 +143,7 @@ const Certifications = () => {
             <div className="h-8 w-px bg-neutral-200 dark:bg-slate-700"></div>
             <div className="text-center">
               <div className="mb-1 text-2xl font-bold text-primary-600 dark:text-primary-100">
-                {
-                  new Set(profile.certifications.map((cert) => cert.issuer))
-                    .size
-                }
+                {new Set(profile.certifications.map((cert) => cert.issuer)).size}
               </div>
               <div className="text-sm text-neutral-600 dark:text-neutral-300">
                 Certifying Bodies
@@ -160,19 +154,18 @@ const Certifications = () => {
               <div className="mb-1 text-2xl font-bold text-primary-600 dark:text-primary-100">
                 {(() => {
                   const certYears = profile.certifications
-                    .map(c => c.date)
-                    .filter(d => d && /^\d{4}/.test(d))
-                    .map(d => parseInt(d.substring(0, 4), 10))
-                    .filter(y => !isNaN(y));
+                    .map((c) => c.date)
+                    .filter((d) => d && /^\d{4}/.test(d))
+                    .map((d) => parseInt(d.substring(0, 4), 10))
+                    .filter((y) => !isNaN(y));
                   if (certYears.length === 0) return '1';
                   const earliest = Math.min(...certYears);
                   const years = new Date().getFullYear() - earliest;
                   return Math.max(1, years);
-                })()}+
+                })()}
+                +
               </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-300">
-                Years Certified
-              </div>
+              <div className="text-sm text-neutral-600 dark:text-neutral-300">Years Certified</div>
             </div>
           </div>
         </div>
