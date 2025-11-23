@@ -57,6 +57,7 @@ export interface Profile {
   email: string;
   phone: string;
   summary: string;
+  aboutSummary?: string;
   avatar: string;
   experience: Experience[];
   education: Education[];
@@ -79,7 +80,8 @@ export const profile: Profile = {
   location: 'Warsaw, Poland',
   email: 'Mahmoudkeweisy@gmail.com',
   phone: '+48 729 403 156',
-  summary:
+  summary: '',
+  aboutSummary:
     'Versatile and dedicated English language educator with experience teaching diverse age groups, from preschool children to adult learners, across various educational settings. Currently pursuing a B.Sc. in Computer Science, with hands-on involvement in multidisciplinary projects and strong proficiency in digital tools and educational academic technologies. Certified in TESOL-TEFL and team management, demonstrating proven leadership, communication, and organisational skills. Adept at designing engaging learning experiences, managing classrooms, and integrating technology to enhance outcomes and foster cross-cultural understanding.',
   avatar: '/avatar.jpg',
 
@@ -258,7 +260,7 @@ export const profile: Profile = {
       image: '/projects/cravelle.png',
     },
     {
-      name: 'Mini Misie Preschool Workspace',
+      name: 'English Teaching (Preschool Workspace)',
       description:
         'A visual showcase of classroom activities, interactive English corners, themed events, and learning materials I created for preschool learners at Mini Misie. Highlights hands-on lesson design, parent engagement initiatives, and child-centered educational environments.',
       technologies: [
